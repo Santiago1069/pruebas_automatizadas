@@ -6,10 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ConfiguracionFunciones {
+public class PageObject {
 
     protected static WebDriver driver;
     private static WebDriverWait wait;
@@ -18,21 +17,21 @@ public class ConfiguracionFunciones {
         ChromeOptions chromeOptions = new ChromeOptions();
         driver = new ChromeDriver(chromeOptions);
         wait = new WebDriverWait(driver, 5);
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\57316\\Documents\\SafeDelivery\\testpruebassafedelivery");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\57316\\Documents\\pruebaAutomatizacion");
     }
 
-    public ConfiguracionFunciones(WebDriver driver) {
-        ConfiguracionFunciones.driver = driver;
+    public PageObject(WebDriver driver) {
+        PageObject.driver = driver;
         wait = new WebDriverWait(driver, 5);
     }
 
     //Ingresar a la aplicacion
-    public static void navegarPorLaAplicacion (String url){
+    public static void navigate(String url){
         driver.get(url);
     }
 
     //web elementos por el xpath
-    private WebElement Find(String locator){
+    public WebElement Find(String locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
 
@@ -42,15 +41,8 @@ public class ConfiguracionFunciones {
     }
 
     //Escribe en los input
-    public void escribir(String locator, String letras){
-        Find(locator).clear();
+    public void writeElement(String locator, String letras){
         Find(locator).sendKeys(letras);
-    }
-
-    //Selecionar una opcio de una lista despeglable
-    public void selectOption(String locator, String option){
-        Select select = new Select(Find(locator));
-        select.selectByValue(option);
     }
 
 
