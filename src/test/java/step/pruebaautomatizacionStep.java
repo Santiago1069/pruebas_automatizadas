@@ -15,10 +15,10 @@ public class pruebaautomatizacionStep {
     @Given("^ingreso al formulario$")
     public void navegarALaAplicacion () throws InterruptedException {
         pruebaautomatizacion.ingresarformulario();
-        pruebaautomatizacion.llenarinputinicio("santiago_sandoval23201@elpoli.edu.co");
+        pruebaautomatizacion.llenarinputinicio("*Aqui va el correo electronico");
         pruebaautomatizacion.clicsiguiente();
         Thread.sleep(5000);
-        pruebaautomatizacion.llenarinputcontrasena("sandoval1069");
+        pruebaautomatizacion.llenarinputcontrasena("*Aqui va la contraseña*");
         pruebaautomatizacion.cliciniciarsesion();
 
     }
